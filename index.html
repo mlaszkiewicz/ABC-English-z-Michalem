@@ -1,0 +1,31 @@
+<head> 
+<title>Langmania 1.0</title>
+<meta charset="UTF-8"> 
+<script>
+var url = "https://wielkasciaga.ml/json.php";
+
+function d (data){
+//var x = JSON.parse(data);
+
+if(data.odp!='ok'){
+ console.log('niewłaściwy kod pakietu');
+ }
+ else{
+ console.log(data.nazwa); 
+document.getElementById("tresc1").innerHTML = data.nazwa;
+localStorage.setItem(data.nazwa, data.a);// obiektow całościowo nie da sie przechowac w localstorage, zrobić pętle nrpakietu.nrwyrazu.pl nrpakietu.nrwyrazuen. Pamietac o numeracji bez zer
+ }
+ 
+}
+
+fetch(url).then(r => r.json())
+  .then(data => d(data) )
+  .catch(e => alert("Błąd połaczenia. Sprawdź internet."))
+  
+  
+  tresc = '';
+ // tresc.innerHTML = x;
+  </script>
+</head>
+<body>
+  <div id="tresc1">tu pojawi sie tresc z pakietu jesli kod bedzie poprawny</div>
